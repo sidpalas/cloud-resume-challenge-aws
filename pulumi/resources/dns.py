@@ -1,7 +1,7 @@
 import pulumi_cloudflare as cloudflare
 
-from acm import cert
-from cloudfront import distribution
+from resources.acm import cert
+from resources.cloudfront import distribution
 
 ZONE_ID = "0e3f3fbfa3955f6ea1d3d52e6ca60e1b"
 

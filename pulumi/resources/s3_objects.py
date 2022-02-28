@@ -6,8 +6,8 @@ import pulumi
 import pulumi_aws as aws
 import pulumi_command as command
 
-from s3 import bucket
-from cloudfront import distribution
+from resources.s3 import bucket
+from resources.cloudfront import distribution
 
 # For each file in the directory, create an S3 object stored in `bucket`
 files = {}

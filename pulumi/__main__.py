@@ -1,14 +1,15 @@
 # All resources specified in separate python modules
 
-import s3
-import s3_objects
+import resources.s3
 
-import dynamodb
+import resources.s3_objects
 
-import lambda_fn
+import resources.dynamodb
 
-import api_gateway
+import resources.lambda_fn
 
-import dns
+import resources.api_gateway
 
-import cloudfront
+import resources.dns
+
+import resources.cloudfront

@@ -1,9 +1,9 @@
 import pulumi
 import pulumi_aws as aws
 
-from api_gateway import api
-from acm import cert
-from s3 import bucket
+from resources.api_gateway import api
+from resources.acm import cert
+from resources.s3 import bucket
 
 
 s3_origin_id = "cloudResumeS3Origin"

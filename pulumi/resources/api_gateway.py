@@ -3,8 +3,8 @@ import time
 import pulumi
 import pulumi_aws as aws
 
-from lambda_fn import lambda_function
-from acm import cert
+from resources.lambda_fn import lambda_function
+from resources.acm import cert
 
 # Define an endpoint that invokes a lambda to handle requests
 api = aws.apigatewayv2.Api(

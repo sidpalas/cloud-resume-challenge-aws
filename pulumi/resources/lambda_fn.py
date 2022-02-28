@@ -3,7 +3,7 @@ import json
 import pulumi
 import pulumi_aws as aws
 
-from dynamodb import dynamodb_table
+from resources.dynamodb import dynamodb_table
 
 
 def generate_inline_dynamo_policy(dynamodb_table_arn):
