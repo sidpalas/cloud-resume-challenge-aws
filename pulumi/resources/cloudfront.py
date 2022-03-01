@@ -37,7 +37,7 @@ distribution = aws.cloudfront.Distribution(
     is_ipv6_enabled=True,
     default_root_object="index.html",
     aliases=[
-        "resume.devopsdeployed.com",
+        "resume.devopsdirective.com",
     ],
     default_cache_behavior=aws.cloudfront.DistributionDefaultCacheBehaviorArgs(
         allowed_methods=[

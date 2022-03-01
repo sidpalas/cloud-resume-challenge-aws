@@ -2,7 +2,7 @@ import pulumi
 import pulumi_aws as aws
 
 
-BUCKET_NAME = "resume.devopsdeployed.com"
+BUCKET_NAME = "resume.devopsdirective.com"
 
 POLICY = """{
   "Version": "2012-10-17",

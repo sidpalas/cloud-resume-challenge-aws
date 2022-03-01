@@ -1,3 +1,14 @@
 h1 {
-  color: green;
+  color: blue;
+}
+
+body {
+  width: 600px;
+  margin: 0 auto;
+  background-color: #ededed;
+}
+
+.content {
+  margin: 16px;
+  padding: 4px;
 }

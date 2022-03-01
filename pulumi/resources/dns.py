@@ -3,7 +3,7 @@ import pulumi_cloudflare as cloudflare
 from resources.acm import cert
 from resources.cloudfront import distribution
 
-ZONE_ID = "0e3f3fbfa3955f6ea1d3d52e6ca60e1b"
+ZONE_ID = "10fcb4b0954ea348eb17e4da5190e091"
 
 
 cert_cname = cloudflare.Record(

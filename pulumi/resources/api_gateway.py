@@ -28,7 +28,7 @@ lambda_permission = aws.lambda_.Permission(
 # Workaround is to run pulumi up again after cert is validated
 aws.apigatewayv2.DomainName(
     "api_custom_domain",
-    domain_name="resume.devopsdeployed.com",
+    domain_name="resume.devopsdirective.com",
     domain_name_configuration=aws.apigatewayv2.DomainNameDomainNameConfigurationArgs(
         certificate_arn=cert.arn,
         endpoint_type="REGIONAL",
