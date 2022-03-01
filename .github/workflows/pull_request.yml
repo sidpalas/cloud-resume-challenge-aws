@@ -24,6 +24,8 @@ jobs:
           python3 -m venv venv
           source ./venv/bin/activate
           pip3 install -r requirements.txt
+        env:
+          GRPC_PYTHON_BUILD_SYSTEM_OPENSSL: true
       - uses: pulumi/actions@v3
         with:
           command: preview
