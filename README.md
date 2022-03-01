@@ -2,9 +2,7 @@
 
 This repo represents my implementation of the [Cloud Resume Challenge](https://cloudresumechallenge.dev/docs/the-challenge/aws/)!
 
-| ![screenshot.png](screenshot.png) |
-|:--:|
-| <i>Sorry it doesn't look like much! </i>😅|
+![screenshot.png](screenshot.png)
 
 I mostly followed the AWS path, with a few minor tweaks:
 - CloudFlare for DNS instead of Route53
