@@ -29,4 +29,5 @@ jobs:
           stack-name: dev
           work-dir: ./pulumi
         env:
+          PYTHONPATH: /opt/hostedtoolcache/Python/3.6.15/x64/bin/
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
