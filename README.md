@@ -39,4 +39,5 @@ I mostly followed the AWS path, with a few minor tweaks:
 - The Pulumi AWS provider does not support adding cache invalidations for cloudfront distributions so I ended up using the `pulumi-command` package to call out to the AWS CLI
 
 ## TODO: 
+- Execute python tests in github action workflow
 - Add separate dev/staging/production Pulumi stacks
