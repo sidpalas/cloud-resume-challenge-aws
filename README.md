@@ -1,101 +1,42 @@
-1. Skip 😅
-2. Create index.html
-```html
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-  <h1>Sid Palas</h1>
-  <p>This is my cloud resume</p>
-  <p>View count: <span id="viewCount">0</span></p>
-</body>
-</html>
-```
-3. Create main.css
-```html
-<link rel="stylesheet" href="main.css">
-```
-4. Create S3 bucket
-5. Create Cloud front distribution
-6. Create Route53 record
-   1. A record (aliased to cloudfront)
-   2. AAAA record (aliased to cloudfront)
-   3. Add NS to google domains
-   4. Add alternate domains to cloudfront 
-      1. Create certificate in ACM
-      2. Create CNAME record to validate certificate
-      3. Add certificate to cloudfront
-7. Create main.js
-```html
-<script src="main.js" defer></script>
-```
-```js
-function updateViewCount() {
-  viewCount = document.getElementById('viewCount');
-  viewCount.innerHTML = Math.random();
-}
+# Cloud Resume Challenge (AWS, Cloudflare, Pulumi)
 
-window.onload = updateViewCount();
-```
-8. Create DynamoDB table
-   - Partition key: environment (dev/staging/production)
-   - Additional info: view_count
-10. Create python lambda
-    1. Write the code
-```python
-import json
+This repo represents my implementation of the [Cloud Resume Challenge](https://cloudresumechallenge.dev/docs/the-challenge/aws/)!
 
-def lambda_handler(event, context):
-    # Within a single dynamo db transaction:
-    #   1. get todays date in dynamo db table 
-    #   2. if exists, increment view_count and update
-    #   3. if doesn't exists, create record with view_count 1
-    #
-    # Get total view count and return in api response
-    return {
-        'statusCode': 200,
-        'body': json.dumps('Hello from Lambda!')
-    }
-```
-    3. Update the IAM role to enable DynamoDB access
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": "dynamodb:UpdateItem",
-            "Resource": "arn:aws:dynamodb:us-east-1:917774925227:table/cloud-resume-views"
-        }
-    ]
-}
-```
-9.  Create api gateway
-   1.  Add custom domain (with API mapping using api/v1)
-   2.  Update cloudfront distribution to route /api/v1 traffic to api gateway (path based routing)
-11.  Write tests
-    1.  mock dynamodb
-12. Infrastructure as code
-    1.  Create IAM user
-    2.  Install pulumi in venv
-    3.  `pulumi new aws-python`
-    4.  Resources:
-        1.  ✅ Set up AWS and Cloudflare authentication
-        2.  ✅ S3 bucket
-        3.  ✅ S3 files
-        4.  ✅ DynamoDB
-        5.  ✅ Lambda
-        6.  ✅ API Gateway
-        7.  ✅ Cloudfront
-        8.  ✅ Cloudflare
+| ![screenshot.png](screenshot.png) |
+|:--:|
+| <i>Sorry it doesn't look like much! </i>😅|
 
-13. Push to github
-14. CI/CD back-end
-15. CI/CD front-end
-16. Blog post / video
+I mostly followed the AWS path, with a few minor tweaks:
+- CloudFlare for DNS instead of Route53
+- Pulumi for IaC instead of AWS Serverless Application Model
 
-BONUS: 
-- modularize pulumi code
-- add dev/staging stacks
+## Repo Layout
+
+### Client
+
+- Minimal html, js, and css files
+- Deployed to S3 bucket fronted by Cloudfront CDN
+
+### Server
+
+- DynamoDB table uses an `environment` key with a `view_count` value
+- Python AWS Lambda function defines a single API route handler which increments the view count for the relevant environment and returns that incremented value.
+- Deployed via AWS Lambda + API Gateway
+
+### Pulumi
+
+- Infrastructure as code configuration for all resources:
+  - `s3.py` - Bucket to store client files
+  - `s3_objects.py` - Client files
+  - `dynamodb.py` - Database to persist `view_count`
+  - `lambda_fn.py` - Serverless api handler
+  - `api_gateway.py` - HTTP API routing to Lambda
+  - `dns.py` - Cloudflare DNS records to set up custom domain
+  - `cloudfront.py` - CDN definition
+
+## Challenges:
+- Pulumi doesn't wait for the SSL certificate to be issued, but it must be active before using it in the API gateway and Cloudfront distribution
+- The Pulumi AWS provider does not support adding cache invalidations for cloudfront distributions so I ended up using the `pulumi-command` package to call out to the AWS CLI
+
+## TODO: 
+- Add separate dev/staging/production Pulumi stacks
