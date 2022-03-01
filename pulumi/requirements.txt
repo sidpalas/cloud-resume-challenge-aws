@@ -1,20 +1,20 @@
 pulumi==3.25.0
-pulumi-aws==4.36.0
+pulumi-aws==4.37.0
 pulumi-cloudflare==4.3.0
 pulumi-command==0.0.3
 # Pinned to avoid https://github.com/pulumi/pulumi/issues/9011
-grpcio==1.43.0
-# Indirect deps
-Arpeggio==1.10.2
-attrs==21.4.0
-click==8.0.4
-dill==0.3.4
-mypy-extensions==0.4.3
-parver==0.3.1
-pathspec==0.9.0
-platformdirs
-protobuf==3.19.4
-PyYAML==6.0
-semver==2.13.0
-six==1.16.0
-typing_extensions==4.1.1
+# grpcio==1.43.0
+# # Indirect deps
+# Arpeggio==1.10.2
+# attrs==21.4.0
+# click==8.0.4
+# dill==0.3.4
+# mypy-extensions==0.4.3
+# parver==0.3.1
+# pathspec==0.9.0
+# platformdirs
+# protobuf==3.19.4
+# PyYAML==6.0
+# semver==2.13.0
+# six==1.16.0
+# typing_extensions==4.1.1
