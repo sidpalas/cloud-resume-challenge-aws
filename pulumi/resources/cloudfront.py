@@ -113,18 +113,9 @@ distribution = aws.cloudfront.Distribution(
     price_class="PriceClass_200",
     restrictions=aws.cloudfront.DistributionRestrictionsArgs(
         geo_restriction=aws.cloudfront.DistributionRestrictionsGeoRestrictionArgs(
-            restriction_type="whitelist",
-            locations=[
-                "US",
-                "CA",
-                "GB",
-                "DE",
-            ],
+            restriction_type="none",
         ),
     ),
-    tags={
-        "Environment": "production",
-    },
     viewer_certificate=aws.cloudfront.DistributionViewerCertificateArgs(
         acm_certificate_arn=cert.arn, ssl_support_method="sni-only"
     ),
