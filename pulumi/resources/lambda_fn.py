@@ -55,7 +55,7 @@ lambda_function = aws.lambda_.Function(
     runtime="python3.9",
     environment=aws.lambda_.FunctionEnvironmentArgs(
         variables={
-            "ENV": "dev",
+            "ENV": "production",
         },
     ),
 )

@@ -5,7 +5,7 @@ import boto3
 
 
 def get_env() -> str:
-    return os.environ.get("ENV")
+    return os.environ.get("ENV", "default")
 
 
 def upsert_view_count(dynamodb_table, environment) -> int:
@@ -35,6 +35,6 @@ def lambda_handler(event, context) -> dict:
 
 
 if __name__ == "__main__":
-    os.environ["ENV"] = "staging"
+    os.environ["ENV"] = "dev"
     res = lambda_handler(None, None)
     print(res)
