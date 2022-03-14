@@ -3,8 +3,8 @@ import os
 import boto3
 from moto import mock_dynamodb2
 
-from main import get_env
-from main import upsert_view_count
+from lambda_function import get_env
+from lambda_function import upsert_view_count
 
 
 def create_views_table(dynamodb=None):
